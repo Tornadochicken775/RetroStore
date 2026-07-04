@@ -31,7 +31,8 @@
             {% for filename in files %}
             <div class="app-item">
                 <h3 class="app-name">{{ filename }}</h3>
-                <a href="itms-services://?action=download-manifest&url=http://192.168.1.179:5000/manifest/{{ category }}/{{ filename[:-4] }}.plist" class="btn">Install</a>
+                <!-- Dynamic URL generated using request.host_url to ensure it works on Render -->
+                <a href="itms-services://?action=download-manifest&url={{ request.host_url.rstrip('/') }}/manifest/{{ filename[:-4] }}.plist" class="btn">Install</a>
             </div>
             {% endfor %}
         {% endfor %}
